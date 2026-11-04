@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "CleanTube+",
+  "short_name": "CleanTube+",
+  "version": "1.5.0",
+  "description": "Optimize YouTube",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "CleanTube+",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "declarativeNetRequest"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ct_block_an_webp",
+        "enabled": true,
+        "path": "rules/block_an_webp.json"
+      },
+      {
+        "id": "ct_block_telemetry",
+        "enabled": true,
+        "path": "rules/block_telemetry.json"
+      }
+    ]
+  },
+  "host_permissions": [
+    "*://*.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": [
+        "content/engine_optimizer.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "js": [
+        "shared/defaultSettings.js",
+        "content/content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

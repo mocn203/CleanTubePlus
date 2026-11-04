@@ -1,0 +1,654 @@
+/**
+ * CleanTube+ - Content Styles
+ */
+
+/* ==========================================================================
+   1. TRANG CHỦ: Ẩn thanh thẻ phân loại chủ đề (Topic Chips) & Fix khoảng cách
+   ========================================================================== */
+
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] #header.ytd-rich-grid-renderer,
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] ytd-feed-filter-chip-bar-renderer,
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] chip-bar-view-model,
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] chips-shelf-view-model,
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] #chips-wrapper,
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] yt-chip-cloud-renderer,
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] #chips,
+html[data-ct-hide-chips="true"] ytd-rich-grid-renderer > #header {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Đảm bảo hàng video đầu tiên hiển thị trọn vẹn, không bị thanh trên cùng che mất */
+html[data-ct-hide-chips="true"] ytd-browse[page-subtype="home"] #contents.ytd-rich-grid-renderer {
+  padding-top: 88px !important;
+}
+
+
+/* ==========================================================================
+   2. XEM VIDEO: Làm sạch phần mô tả (Description)
+   Ẩn Chi tiết video, Đặt câu hỏi, Bản chép lời, Thẻ gợi ý kênh/video
+   ========================================================================== */
+
+html[data-ct-clean-desc="true"] ytd-structured-description-content-renderer > ytd-item-section-renderer,
+html[data-ct-clean-desc="true"] ytd-structured-description-content-renderer > ytd-video-description-header-renderer,
+html[data-ct-clean-desc="true"] ytd-structured-description-content-renderer > ytd-video-description-transcript-section-renderer,
+html[data-ct-clean-desc="true"] ytd-structured-description-content-renderer > ytd-video-description-infocards-section-renderer,
+html[data-ct-clean-desc="true"] ytd-structured-description-content-renderer > ytd-video-description-music-section-renderer,
+html[data-ct-clean-desc="true"] ytd-structured-description-content-renderer > ytd-video-description-course-section-renderer,
+html[data-ct-clean-desc="true"] ytd-structured-description-content-renderer > :not(ytd-expandable-video-description-body-renderer):not(ytd-video-title-header-view-model):not(#header),
+html[data-ct-clean-desc="true"] ytd-video-description-transcript-section-renderer,
+html[data-ct-clean-desc="true"] ytd-video-description-infocards-section-renderer,
+html[data-ct-clean-desc="true"] ytd-video-description-header-renderer,
+html[data-ct-clean-desc="true"] #description ytd-item-section-renderer,
+html[data-ct-clean-desc="true"] #structured-description ytd-item-section-renderer {
+  display: none !important;
+}
+
+
+/* ==========================================================================
+   3. THANH CUỘN (SCROLLBAR): Fix Full - Ẩn triệt để thanh cuộn trên MỌI khu vực
+   Áp dụng toàn trang: trang chủ, menu trái (sidebar), playlist, comments, v.v.
+   ========================================================================== */
+
+html[data-ct-hide-scrollbar="true"],
+html[data-ct-hide-scrollbar="true"] body,
+html[data-ct-hide-scrollbar="true"] ytd-app,
+html[data-ct-hide-scrollbar="true"] #page-manager,
+html[data-ct-hide-scrollbar="true"] tp-yt-app-drawer,
+html[data-ct-hide-scrollbar="true"] #guide-inner-content,
+html[data-ct-hide-scrollbar="true"] #guide-content,
+html[data-ct-hide-scrollbar="true"] ytd-guide-renderer,
+html[data-ct-hide-scrollbar="true"] * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html[data-ct-hide-scrollbar="true"] ::-webkit-scrollbar,
+html[data-ct-hide-scrollbar="true"]::-webkit-scrollbar,
+html[data-ct-hide-scrollbar="true"] body::-webkit-scrollbar,
+html[data-ct-hide-scrollbar="true"] ytd-app::-webkit-scrollbar,
+html[data-ct-hide-scrollbar="true"] tp-yt-app-drawer::-webkit-scrollbar,
+html[data-ct-hide-scrollbar="true"] #guide-inner-content::-webkit-scrollbar,
+html[data-ct-hide-scrollbar="true"] #guide-content::-webkit-scrollbar,
+html[data-ct-hide-scrollbar="true"] *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+
+/* ==========================================================================
+   4. MENU PROFILE: Ẩn các mục ít dùng (Khoanh đỏ)
+   - Tài khoản Google
+   - Phím tắt
+   - Trợ giúp & Gửi ý kiến phản hồi
+   ========================================================================== */
+
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(a[href*="myaccount.google.com"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(a[href*="google.com/account"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer[data-ct-hide="google-account"] {
+  display: none !important;
+}
+
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(path[d*="M20 5H4"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(path[d*="M19 3H5"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(yt-icon[icon*="keyboard"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer[data-ct-hide="shortcuts"] {
+  display: none !important;
+}
+
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(a[href*="support.google.com"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(path[d*="M20 2H4"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer:has(path[d*="M12 2C6.48"]),
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer ytd-compact-link-renderer[data-ct-hide="help-feedback"],
+html[data-ct-clean-profile="true"] ytd-multi-page-menu-renderer[menu-style*="account"] #sections > ytd-multi-page-menu-section-renderer:last-child {
+  display: none !important;
+}
+
+
+/* ==========================================================================
+   5. TẮT HOÀN TOÀN KHUNG NỔI & NỀN MÀU KHI RÊ CHUỘT VÀO VIDEO (FIX FULL)
+   - Triệt tiêu màu nền lấy mẫu thumbnail (Themed Palette / Color Sampling)
+   - Ẩn triệt để lớp phủ Touch Feedback (nguyên nhân tạo khung bo màu peach/blue/lavender)
+   - Xóa bỏ viền bo, bóng đổ trên Trang chủ, Cột gợi ý (Watch page), Tìm kiếm
+   - Chặn hoàn toàn video preview và mini-player khi rê chuột
+   ========================================================================== */
+
+/* 5.1. Triệt tiêu toàn bộ biến màu nền mẫu thumbnail của YouTube */
+html[data-ct-disable-hover="true"],
+html[data-ct-disable-hover="true"] body,
+html[data-ct-disable-hover="true"] ytd-app,
+html[data-ct-disable-hover="true"] yt-lockup-view-model,
+html[data-ct-disable-hover="true"] compact-landscape-no-button-layout-view-model,
+html[data-ct-disable-hover="true"] ytd-compact-video-renderer,
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer,
+html[data-ct-disable-hover="true"] ytd-rich-grid-media,
+html[data-ct-disable-hover="true"] ytd-video-renderer {
+  --yt-saturated-base-background: transparent !important;
+  --yt-saturated-raised-background: transparent !important;
+  --yt-spec-touch-response: transparent !important;
+  --yt-spec-touch-response-inverse: transparent !important;
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-themed-palette-hover: transparent !important;
+  --yt-spec-additive-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-static-overlay-background-solid: transparent !important;
+  --t7f4f2c6d54836ce0: transparent !important;
+  --t0ccd1ace000d5e93: transparent !important;
+  --tf3fc855af2285f5f: transparent !important;
+}
+
+/* 5.2. ẨN TRIỆT ĐỂ lớp phủ Touch Feedback (nguyên nhân tạo khung màu nổi khi trỏ chuột) */
+html[data-ct-disable-hover="true"] yt-touch-feedback-shape,
+html[data-ct-disable-hover="true"] .yt-spec-touch-feedback-shape,
+html[data-ct-disable-hover="true"] .yt-spec-touch-feedback-shape__fill,
+html[data-ct-disable-hover="true"] .yt-spec-touch-feedback-shape__stroke,
+html[data-ct-disable-hover="true"] .yt-spec-touch-feedback-shape__hover-effect,
+html[data-ct-disable-hover="true"] .ytSpecTouchFeedbackShapeHost,
+html[data-ct-disable-hover="true"] .ytSpecTouchFeedbackShapeHovered,
+html[data-ct-disable-hover="true"] .ytSpecTouchFeedbackShapeHoverEffect,
+html[data-ct-disable-hover="true"] .ytSpecTouchFeedbackShapeFill,
+html[data-ct-disable-hover="true"] .ytSpecTouchFeedbackShapeStroke,
+html[data-ct-disable-hover="true"] [class*="ytSpecTouchFeedbackShape"],
+html[data-ct-disable-hover="true"] [class*="TouchFeedbackShape"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 5.3. XÓA BỎ nền màu, viền bo, bóng đổ trên TẤT CẢ các loại thẻ video */
+/* Trang chủ (Home grid) */
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer,
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer:hover,
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer.ytd-rich-item-renderer-highlight,
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer.ytd-rich-item-renderer-highlight-border,
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer[rich-grid-hover-highlight],
+html[data-ct-disable-hover="true"] ytd-rich-grid-media,
+html[data-ct-disable-hover="true"] ytd-rich-grid-media:hover,
+html[data-ct-disable-hover="true"] #content.ytd-rich-item-renderer,
+html[data-ct-disable-hover="true"] #content.ytd-rich-item-renderer:hover,
+html[data-ct-disable-hover="true"] #dismissible.ytd-rich-grid-media,
+html[data-ct-disable-hover="true"] #dismissible.ytd-rich-grid-media:hover,
+
+/* Cột gợi ý xem video (Watch page sidebar - #secondary) */
+html[data-ct-disable-hover="true"] ytd-compact-video-renderer,
+html[data-ct-disable-hover="true"] ytd-compact-video-renderer:hover,
+html[data-ct-disable-hover="true"] ytd-compact-video-renderer #dismissible,
+html[data-ct-disable-hover="true"] ytd-compact-video-renderer #dismissible:hover,
+html[data-ct-disable-hover="true"] ytd-compact-playlist-renderer,
+html[data-ct-disable-hover="true"] ytd-compact-playlist-renderer:hover,
+html[data-ct-disable-hover="true"] ytd-compact-radio-renderer,
+html[data-ct-disable-hover="true"] ytd-compact-radio-renderer:hover,
+html[data-ct-disable-hover="true"] compact-landscape-no-button-layout-view-model,
+html[data-ct-disable-hover="true"] compact-landscape-no-button-layout-view-model:hover,
+html[data-ct-disable-hover="true"] compact-landscape-view-model,
+html[data-ct-disable-hover="true"] compact-landscape-view-model:hover,
+html[data-ct-disable-hover="true"] .ytwCompactLandscapeNoButtonLayoutViewModelHost,
+html[data-ct-disable-hover="true"] .ytwCompactLandscapeNoButtonLayoutViewModelHost:hover,
+html[data-ct-disable-hover="true"] [class*="ytwCompactLandscape"],
+html[data-ct-disable-hover="true"] [class*="ytwCompactLandscape"]:hover,
+html[data-ct-disable-hover="true"] [class*="CompactLandscape"],
+html[data-ct-disable-hover="true"] [class*="CompactLandscape"]:hover,
+
+/* Lockup View Model mới của YouTube (Trang chủ & Watch Next) */
+html[data-ct-disable-hover="true"] yt-lockup-view-model,
+html[data-ct-disable-hover="true"] yt-lockup-view-model:hover,
+html[data-ct-disable-hover="true"] .ytLockupViewModelHost,
+html[data-ct-disable-hover="true"] .ytLockupViewModelHost:hover,
+html[data-ct-disable-hover="true"] .ytLockupViewModelCard,
+html[data-ct-disable-hover="true"] .ytLockupViewModelCard:hover,
+html[data-ct-disable-hover="true"] .ytLockupViewModelEnvelope,
+html[data-ct-disable-hover="true"] .ytLockupViewModelEnvelope:hover,
+html[data-ct-disable-hover="true"] .ytLockupViewModelRoot,
+html[data-ct-disable-hover="true"] .ytLockupViewModelRoot:hover,
+html[data-ct-disable-hover="true"] [class*="ytLockupViewModel"],
+html[data-ct-disable-hover="true"] [class*="ytLockupViewModel"]:hover,
+html[data-ct-disable-hover="true"] [class*="lockupViewModel"],
+html[data-ct-disable-hover="true"] [class*="lockupViewModel"]:hover,
+html[data-ct-disable-hover="true"] [class*="LockupViewModel"],
+html[data-ct-disable-hover="true"] [class*="LockupViewModel"]:hover,
+
+/* Tìm kiếm, Playlist & Kênh */
+html[data-ct-disable-hover="true"] ytd-video-renderer,
+html[data-ct-disable-hover="true"] ytd-video-renderer:hover,
+html[data-ct-disable-hover="true"] ytd-video-renderer #dismissible,
+html[data-ct-disable-hover="true"] ytd-video-renderer #dismissible:hover,
+html[data-ct-disable-hover="true"] ytd-grid-video-renderer,
+html[data-ct-disable-hover="true"] ytd-grid-video-renderer:hover,
+html[data-ct-disable-hover="true"] ytd-playlist-video-renderer,
+html[data-ct-disable-hover="true"] ytd-playlist-video-renderer:hover,
+html[data-ct-disable-hover="true"] ytd-playlist-panel-video-renderer,
+html[data-ct-disable-hover="true"] ytd-playlist-panel-video-renderer:hover,
+html[data-ct-disable-hover="true"] ytd-thumbnail,
+html[data-ct-disable-hover="true"] ytd-thumbnail:hover {
+  background-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* 5.4. Xóa pseudo-elements ::before / ::after nếu YouTube dùng để vẽ viền hoặc nền */
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer::before,
+html[data-ct-disable-hover="true"] ytd-rich-item-renderer::after,
+html[data-ct-disable-hover="true"] ytd-compact-video-renderer::before,
+html[data-ct-disable-hover="true"] ytd-compact-video-renderer::after,
+html[data-ct-disable-hover="true"] compact-landscape-no-button-layout-view-model::before,
+html[data-ct-disable-hover="true"] compact-landscape-no-button-layout-view-model::after,
+html[data-ct-disable-hover="true"] yt-lockup-view-model::before,
+html[data-ct-disable-hover="true"] yt-lockup-view-model::after,
+html[data-ct-disable-hover="true"] .ytLockupViewModelHost::before,
+html[data-ct-disable-hover="true"] .ytLockupViewModelHost::after,
+html[data-ct-disable-hover="true"] .ytwCompactLandscapeNoButtonLayoutViewModelHost::before,
+html[data-ct-disable-hover="true"] .ytwCompactLandscapeNoButtonLayoutViewModelHost::after,
+html[data-ct-disable-hover="true"] #dismissible::before,
+html[data-ct-disable-hover="true"] #dismissible::after {
+  display: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 5.5. Ẩn hoàn toàn trình phát xem trước & preview overlay khi hover */
+html[data-ct-disable-hover="true"] #inline-preview-player,
+html[data-ct-disable-hover="true"] ytd-video-preview,
+html[data-ct-disable-hover="true"] #video-preview,
+html[data-ct-disable-hover="true"] #video-preview-container,
+html[data-ct-disable-hover="true"] ytd-inline-preview-renderer,
+html[data-ct-disable-hover="true"] #preview.ytd-thumbnail,
+html[data-ct-disable-hover="true"] #hover-overlays.ytd-thumbnail,
+html[data-ct-disable-hover="true"] ytd-thumbnail [id*="preview"],
+html[data-ct-disable-hover="true"] [id*="video-preview"],
+html[data-ct-disable-hover="true"] #hover-overlays {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+
+/* ==========================================================================
+   6. TIẾT KIỆM DATA: Chặn tải ảnh động Thumbnail (Animated WebP & Preview)
+   ========================================================================== */
+
+html[data-ct-block-animated-thumbs="true"] #preview.ytd-thumbnail,
+html[data-ct-block-animated-thumbs="true"] ytd-thumbnail-overlay-hover-text-renderer,
+html[data-ct-block-animated-thumbs="true"] ytd-thumbnail [id*="preview"],
+html[data-ct-block-animated-thumbs="true"] ytd-video-preview,
+html[data-ct-block-animated-thumbs="true"] #hover-overlays {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+
+/* ==========================================================================
+   7. GIẢM TẢI GPU/CPU: Tắt hoàn toàn Ambient Mode (Ánh sáng xung quanh)
+   ========================================================================== */
+
+html[data-ct-disable-ambient="true"] #cinematics,
+html[data-ct-disable-ambient="true"] #cinematics-container,
+html[data-ct-disable-ambient="true"] ytd-cinematics-template-renderer,
+html[data-ct-disable-ambient="true"] canvas.ytd-cinematics-template-renderer,
+html[data-ct-disable-ambient="true"] .ytp-glow-layer,
+html[data-ct-disable-ambient="true"] .ytp-ambient-lighting {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* ==========================================================================
+   8. TẬP TRUNG XEM: Ẩn Thẻ màn hình kết thúc (Endscreen Cards 20s cuối)
+   ========================================================================== */
+
+html[data-ct-hide-endscreen="true"] .ytp-ce-element,
+html[data-ct-hide-endscreen="true"] .ytp-ce-covering-overlay,
+html[data-ct-hide-endscreen="true"] .ytp-ce-element-show,
+html[data-ct-hide-endscreen="true"] .ytp-endscreen-content,
+html[data-ct-hide-endscreen="true"] .ytp-cards-teaser,
+html[data-ct-hide-endscreen="true"] .ytp-cards-button {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* ==========================================================================
+   9. MƯỢT CUỘN TRANG: Tắt hiệu ứng Skeleton Shimmer (Bóng nhấp nháy khi tải)
+   ========================================================================== */
+
+html[data-ct-disable-shimmer="true"] *[class*="skeleton"],
+html[data-ct-disable-shimmer="true"] *[class*="shimmer"],
+html[data-ct-disable-shimmer="true"] [ghost-card-diffuse-2],
+html[data-ct-disable-shimmer="true"] ytd-ghost-grid-renderer,
+html[data-ct-disable-shimmer="true"] ytd-ghost-cards,
+html[data-ct-disable-shimmer="true"] #ghost-cards,
+html[data-ct-disable-shimmer="true"] .ghost-card,
+html[data-ct-disable-shimmer="true"] .skeleton-bg,
+html[data-ct-disable-shimmer="true"] ytd-rich-grid-media[loading] #details {
+  animation: none !important;
+  transition: none !important;
+  background-image: none !important;
+}
+
+
+/* ==========================================================================
+   10. LÀM SẠCH QUẢNG CÁO: Ẩn Kệ bán hàng (Merch Shelf) & Banner YouTube Premium
+   ========================================================================== */
+
+html[data-ct-hide-merch-promo="true"] ytd-merch-shelf-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-banner-promo-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-statement-banner-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-primetime-promo-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-ad-slot-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-in-feed-ad-layout-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-action-companion-ad-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-compact-promoted-video-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-promoted-sparkles-web-renderer,
+html[data-ct-hide-merch-promo="true"] #panels ytd-shopping-card-renderer,
+html[data-ct-hide-merch-promo="true"] ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-shopping-page"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* ==========================================================================
+   11. XÓA NÚT DƯỚI VIDEO: Ẩn Ask AI, Tải xuống, Nút 3 chấm & Mục Báo cáo (Report)
+   ========================================================================== */
+
+/* Nút Ask AI (Đặt câu hỏi / Biểu tượng ngôi sao 4 cánh Sparkle) */
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions yt-button-view-model:has(button[aria-label*="Ask"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions yt-button-view-model:has(button[aria-label*="Đặt câu hỏi"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-button-renderer:has(button[aria-label*="Ask"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-button-renderer:has(button[aria-label*="Đặt câu hỏi"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions [chip-style*="AI"],
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions .you-chat-entrypoint-button,
+html[data-ct-clean-actions="true"] #flexible-item-buttons [chip-style*="AI"],
+html[data-ct-clean-actions="true"] #flexible-item-buttons .you-chat-entrypoint-button,
+html[data-ct-clean-actions="true"] ytd-menu-renderer [chip-style*="AI"],
+html[data-ct-clean-actions="true"] ytd-menu-renderer .you-chat-entrypoint-button,
+html[data-ct-clean-actions="true"] [data-ct-hide="ask-ai"],
+
+/* Nút Tải xuống (Download / Biểu tượng mũi tên trỏ xuống) */
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-download-button-renderer,
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer ytd-download-button-renderer,
+html[data-ct-clean-actions="true"] #flexible-item-buttons ytd-download-button-renderer,
+html[data-ct-clean-actions="true"] ytd-download-button-renderer,
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions yt-button-view-model:has(button[aria-label*="Tải xuống"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions yt-button-view-model:has(button[aria-label*="Download"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-button-renderer:has(button[aria-label*="Tải xuống"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-button-renderer:has(button[aria-label*="Download"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions yt-button-view-model:has(path[d*="M17 18v1H6v-1h11"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-button-renderer:has(path[d*="M17 18v1H6v-1h11"]),
+html[data-ct-clean-actions="true"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:has(path[d*="M17 18v1H6v-1h11"]),
+html[data-ct-clean-actions="true"] ytd-menu-popup-renderer ytd-menu-service-item-download-renderer,
+html[data-ct-clean-actions="true"] [data-ct-hide="download-button"],
+
+/* Nút 3 chấm ngang dưới video (More actions / Tác vụ khác) */
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer > yt-icon-button#button,
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer > .dropdown-trigger,
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer > #button,
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer yt-icon-button.ytd-menu-renderer,
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer yt-button-shape:has(button[aria-label*="More"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer yt-button-shape:has(button[aria-label*="Tác vụ"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer yt-button-view-model:has(button[aria-label*="More"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-menu-renderer yt-button-view-model:has(button[aria-label*="Tác vụ"]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions [aria-label="More actions"],
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions [aria-label="Tác vụ khác"],
+html[data-ct-clean-actions="true"] [data-ct-hide="more-actions"],
+
+/* Mục Báo cáo vi phạm (Report / Biểu tượng lá cờ) */
+html[data-ct-clean-actions="true"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:has(path[d*="M14.4 6L14 4H5"]),
+html[data-ct-clean-actions="true"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:has(path[d*="v17h2v-7h5.6l.4 2h7V6"]),
+html[data-ct-clean-actions="true"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:has(yt-icon[icon*="flag"]),
+html[data-ct-clean-actions="true"] ytd-menu-service-item-renderer:has(yt-icon[icon*="flag"]),
+html[data-ct-clean-actions="true"] [data-ct-hide="report"],
+
+/* Nút Remix (Phối lại) dưới video thường */
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-button-renderer:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions ytd-button-renderer:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions yt-button-view-model:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-actions="true"] ytd-watch-metadata #actions yt-button-view-model:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-actions="true"] #flexible-item-buttons ytd-button-renderer:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-actions="true"] #flexible-item-buttons ytd-button-renderer:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-actions="true"] #flexible-item-buttons yt-button-view-model:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-actions="true"] #flexible-item-buttons yt-button-view-model:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-actions="true"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:has([aria-label*="Remix" i]),
+html[data-ct-clean-actions="true"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:has([aria-label*="Phối lại" i]),
+html[data-ct-clean-actions="true"] [data-ct-hide="remix-button"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+
+/* ==========================================================================
+   12. TỐI ƯU HIỆU NĂNG: Giải phóng VRAM & GPU Compositing Layer
+   - Tắt làm mờ nền backdrop-filter (ngốn VRAM/GPU)
+   - Bật content-visibility: auto trên video ngoài màn hình (tiết kiệm 50% RAM/GPU)
+   - Tắt will-change ép phân bổ layer bừa bãi
+   ========================================================================== */
+
+/* 12.1. Loại bỏ các hiệu ứng làm mờ nền ngốn GPU Compositor */
+html[data-ct-optimize-gpu="true"] ytd-masthead,
+html[data-ct-optimize-gpu="true"] #masthead-container,
+html[data-ct-optimize-gpu="true"] #background.ytd-masthead,
+html[data-ct-optimize-gpu="true"] tp-yt-paper-dialog,
+html[data-ct-optimize-gpu="true"] ytd-multi-page-menu-renderer,
+html[data-ct-optimize-gpu="true"] ytd-menu-popup-renderer,
+html[data-ct-optimize-gpu="true"] .yt-spec-backdrop {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 12.2. Native content-visibility: auto - Bỏ qua dựng hình video ngoài màn hình */
+html[data-ct-optimize-gpu="true"] ytd-rich-item-renderer,
+html[data-ct-optimize-gpu="true"] ytd-compact-video-renderer,
+html[data-ct-optimize-gpu="true"] ytd-video-renderer {
+  content-visibility: auto !important;
+  contain-intrinsic-size: 300px 200px !important;
+}
+
+/* 12.3. Trả will-change về tự động để GPU không bị giữ chặt bộ nhớ texture */
+html[data-ct-optimize-gpu="true"] ytd-app,
+html[data-ct-optimize-gpu="true"] #page-manager,
+html[data-ct-optimize-gpu="true"] #contents.ytd-rich-grid-renderer,
+html[data-ct-optimize-gpu="true"] #items.ytd-watch-next-secondary-results-renderer {
+  will-change: auto !important;
+}
+
+
+/* ==========================================================================
+   13. TIỆN ÍCH PHÁT VIDEO: Chặn Pop-up Tạm Dừng & Tắt Đếm Ngược Chuyển Video
+   ========================================================================== */
+
+/* 13.1. Ẩn dialog và lớp phủ làm mờ "Video đã tạm dừng. Bạn có muốn tiếp tục xem?" */
+html[data-ct-autoconfirm="true"] ytd-popup-container tp-yt-paper-dialog:has(yt-confirm-dialog-renderer #confirm-button),
+html[data-ct-autoconfirm="true"] tp-yt-iron-overlay-backdrop.opened:has(+ tp-yt-paper-dialog yt-confirm-dialog-renderer) {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 13.2. Ẩn lớp phủ đếm ngược tự chuyển video tiếp theo */
+html[data-ct-disable-autonav="true"] .ytp-upnext,
+html[data-ct-disable-autonav="true"] .ytp-autonav-endscreen-countdown-overlay {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* ==========================================================================
+   14. CLEAN YOUTUBE SHORTS (HƯỚNG A: TINH GỌN & MỞ KHÓA ĐIỀU KHIỂN)
+   ========================================================================== */
+
+/* 14.1. Dọn sạch rác thị giác đè lên video Shorts */
+/* Nút Remix (Phối lại) - Bỏ hẳn trên Shorts máy tính */
+html[data-ct-clean-shorts="true"] #remix-button,
+html[data-ct-clean-shorts="true"] [id*="remix-button"],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #remix-button,
+html[data-ct-clean-shorts="true"] ytd-shorts #remix-button,
+html[data-ct-clean-shorts="true"] ytd-shorts [id*="remix"],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [id*="remix"],
+html[data-ct-clean-shorts="true"] ytd-shorts ytd-button-renderer[is-remix],
+html[data-ct-clean-shorts="true"] ytd-shorts [aria-label*="Remix" i],
+html[data-ct-clean-shorts="true"] ytd-shorts [aria-label*="Phối lại" i],
+html[data-ct-clean-shorts="true"] ytd-shorts [title*="Remix" i],
+html[data-ct-clean-shorts="true"] ytd-shorts [title*="Phối lại" i],
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-shape:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-shape:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-view-model:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-view-model:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts #actions ytd-button-renderer:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts #actions ytd-button-renderer:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts #actions > *:has([aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts #actions > *:has([aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts #actions [aria-label*="Remix" i],
+html[data-ct-clean-shorts="true"] ytd-shorts #actions [aria-label*="Phối lại" i],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer ytd-button-renderer[is-remix],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-shape:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-shape:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-view-model:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-view-model:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions ytd-button-renderer:has(button[aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions ytd-button-renderer:has(button[aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions > *:has(#remix-button),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions > *:has([aria-label*="Remix" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions > *:has([aria-label*="Phối lại" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions [aria-label*="Remix" i],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions [aria-label*="Phối lại" i],
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-remix"],
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-remix-text"],
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-after-share"],
+
+/* Ẩn triệt để toàn bộ các nút và nhãn xuất hiện sau nút Share trong cột #actions */
+html[data-ct-clean-shorts="true"] ytd-shorts #actions > *:has([aria-label*="Share" i]) ~ *,
+html[data-ct-clean-shorts="true"] ytd-shorts #actions > *:has([aria-label*="Chia sẻ" i]) ~ *,
+html[data-ct-clean-shorts="true"] ytd-shorts #actions > #share-button ~ *,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions > *:has([aria-label*="Share" i]) ~ *,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions > *:has([aria-label*="Chia sẻ" i]) ~ *,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #actions > #share-button ~ *,
+
+/* Nút Play/Pause overlay góc trên bên trái Shorts */
+html[data-ct-clean-shorts="true"] ytd-shorts .ytp-play-button,
+html[data-ct-clean-shorts="true"] ytd-shorts .ytp-large-play-button,
+html[data-ct-clean-shorts="true"] ytd-reel-video-renderer .ytp-play-button,
+html[data-ct-clean-shorts="true"] ytd-reel-video-renderer .ytp-large-play-button,
+html[data-ct-clean-shorts="true"] ytd-shorts button[aria-label*="Play" i],
+html[data-ct-clean-shorts="true"] ytd-shorts button[aria-label*="Pause" i],
+html[data-ct-clean-shorts="true"] ytd-shorts button[aria-label*="Phát" i],
+html[data-ct-clean-shorts="true"] ytd-shorts button[aria-label*="Tạm dừng" i],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-icon-button:has(path[d*="M8 5v14l11-7z"]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-icon-button:has(path[d*="M6 19h4"]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-shape:has(button[aria-label*="Play" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-shape:has(button[aria-label*="Pause" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-shape:has(button[aria-label*="Phát" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-shape:has(button[aria-label*="Tạm dừng" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-view-model:has(button[aria-label*="Play" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-view-model:has(button[aria-label*="Pause" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-view-model:has(button[aria-label*="Phát" i]),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-button-view-model:has(button[aria-label*="Tạm dừng" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-icon-button:has(path[d*="M8 5v14l11-7z"]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-icon-button:has(path[d*="M6 19h4"]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-shape:has(button[aria-label*="Play" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-shape:has(button[aria-label*="Pause" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-shape:has(button[aria-label*="Phát" i]),
+html[data-ct-clean-shorts="true"] ytd-shorts yt-button-shape:has(button[aria-label*="Tạm dừng" i]),
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-play-button"],
+
+/* Đĩa nhạc xoay tròn nhấp nháy góc dưới phải */
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer ytd-reel-channel-with-sound-button-renderer,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer ytd-reel-player-overlay-renderer-sound-metadata,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [class*="sound-button"],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [class*="sound-metadata"],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [aria-label*="Sound" i],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [aria-label*="Âm thanh" i],
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-sound"],
+
+/* Nút Đăng ký (Subscribe) nhấp nháy đè lên Shorts */
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer ytd-subscribe-button-renderer,
+html[data-ct-clean-shorts="true"] ytd-reel-player-header-renderer ytd-subscribe-button-renderer,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-subscribe-button-view-model,
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-subscribe"],
+
+/* Thẻ bán hàng & Shopping banner trên Shorts */
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer ytd-shopping-card-renderer,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer ytd-shopping-companion-renderer,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [class*="shopping"],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [class*="product-tag"],
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-shopping"],
+
+/* Thẻ video liên quan & Dải chạy chữ tên bài hát */
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer ytd-reel-related-video-renderer,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer [class*="related-video"],
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer .sound-title,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #sound-metadata,
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-related"],
+
+/* Tiêu đề video Shorts & dòng mô tả âm thanh (Giữ nguyên Logo avatar & Tên kênh) */
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-shorts-video-title-view-model,
+html[data-ct-clean-shorts="true"] ytd-shorts yt-shorts-video-title-view-model,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #title:not(ytd-channel-name *),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer .title:not(ytd-channel-name *),
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer h3.title,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer yt-formatted-string.title,
+html[data-ct-clean-shorts="true"] ytd-reel-player-overlay-renderer #description,
+html[data-ct-clean-shorts="true"] ytd-shorts #description.ytd-reel-player-overlay-renderer,
+html[data-ct-clean-shorts="true"] [data-ct-hide="shorts-title"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 14.2. Luôn hiển thị thanh tua tiến trình video Shorts rõ ràng & dễ kéo */
+html[data-ct-clean-shorts="true"] ytd-shorts .ytp-progress-bar-container,
+html[data-ct-clean-shorts="true"] ytd-shorts .ytp-progress-bar,
+html[data-ct-clean-shorts="true"] ytd-shorts ytd-reel-video-renderer .ytp-progress-bar-container {
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: 6px !important;
+  pointer-events: auto !important;
+}
+
+html[data-ct-clean-shorts="true"] ytd-shorts .ytp-scrubber-button {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* 14.3. Ẩn kệ Shorts gây loãng ở Trang chủ & Tìm kiếm */
+html[data-ct-clean-shorts="true"] ytd-reel-shelf-renderer,
+html[data-ct-clean-shorts="true"] ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+html[data-ct-clean-shorts="true"] ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 14.4. Tối ưu cuộn & chuyển video Shorts siêu mượt (Smooth Reel Transitions) */
+html[data-ct-clean-shorts="true"] ytd-shorts,
+html[data-ct-clean-shorts="true"] #shorts-container,
+html[data-ct-clean-shorts="true"] #shorts-inner-container {
+  scroll-behavior: smooth !important;
+}
+
+
+
